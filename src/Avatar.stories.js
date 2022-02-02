@@ -5,6 +5,14 @@ import { Avatar } from "./Avatar";
 export default {
   title: "Design System/Avatar",
   component: Avatar,
+  argTypes: {
+    size: {
+      control: {
+        type: "select",
+      },
+      options: ["tiny", "small", "medium", "large"],
+    },
+  },
 };
 
 export const Standard = (args) => <Avatar {...args} />;
@@ -29,24 +37,29 @@ Sizes.args = {
 
 export const Initials = (args) => (
   <div>
-    <Avatar username="Tom Coleman" />
-    <Avatar username="Dominic Nguyen" />
-    <Avatar username="Kyle Suss" />
-    <Avatar username="Michael Shilman" />
+    <Avatar {...args} username="Tom Coleman" />
+    <Avatar {...args} username="Dominic Nguyen" />
+    <Avatar {...args} username="Kyle Suss" />
+    <Avatar {...args} username="Michael Shilman" />
   </div>
 );
 
+Initials.args = {
+  loading: false,
+  size: "large",
+};
+
 export const Loading = (args) => (
-    <div>
-      <Avatar {...args} size="large" />
-      <Avatar {...args} size="medium" />
-      <Avatar {...args} size="small" />
-      <Avatar {...args} size="tiny" />
-    </div>
-  );
-  Loading.args = {
-    loading: true,
-  };
+  <div>
+    <Avatar {...args} size="large" />
+    <Avatar {...args} size="medium" />
+    <Avatar {...args} size="small" />
+    <Avatar {...args} size="tiny" />
+  </div>
+);
+Loading.args = {
+  loading: true,
+};
 
 export const Large = (args) => (
   <div>
