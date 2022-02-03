@@ -1,7 +1,7 @@
 {
-  "name": "learnstorybook-design-system-template",
+  "name": "@richorrichard/learnstorybook-design-system",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -15,7 +15,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cross-env BABEL_ENV=production babel src -d dist",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006",
@@ -37,7 +37,16 @@
       }
     ]
   },
-  "babel": {},
+  "babel": {
+    "presets": [
+      [
+        "react-app",
+        {
+          "absoluteRuntime": false
+        }
+      ]
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -51,6 +60,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.17.0",
     "@storybook/addon-a11y": "^6.4.18",
     "@storybook/addon-actions": "^6.4.18",
     "@storybook/addon-essentials": "^6.4.18",
@@ -60,7 +70,14 @@
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.4.18",
     "@storybook/testing-library": "^0.0.8",
+    "auto": "^10.32.6",
     "chromatic": "^6.2.0",
+    "cross-env": "^7.0.3",
     "prettier": "^2.5.1"
-  }
+  },
+  "description": "Storybook Design System Tutorial",
+  "main": "dist/index.js",
+  "repository": "https://github.com/richorrichard/learnstorybook-design-system.git",
+  "author": "Richard Sherman <hello@richardsherman.com>",
+  "license": "MIT"
 }
