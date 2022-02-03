@@ -5,6 +5,10 @@ import { Avatar } from "./Avatar";
 export default {
   title: "Design System/Avatar",
   component: Avatar,
+  /*
+   * More on Storybook argTypes at:
+   * https://storybook.js.org/docs/react/api/argtypes
+   */
   argTypes: {
     size: {
       control: {
@@ -12,10 +16,6 @@ export default {
       },
       options: ["tiny", "small", "medium", "large"],
     },
-  },
-  parameters: {
-    componentSubtitle:
-      "Displays an image that represents a user or organization",
   },
 };
 
@@ -38,26 +38,15 @@ Sizes.args = {
   username: "Tom Coleman",
   src: "https://avatars2.githubusercontent.com/u/132554",
 };
-Sizes.parameters = {
-  docs: {
-    // The story now contains a description
-    storyDescription: "4 sizes are supported",
-  },
-};
 
 export const Initials = (args) => (
   <div>
-    <Avatar {...args} username="Tom Coleman" />
-    <Avatar {...args} username="Dominic Nguyen" />
-    <Avatar {...args} username="Kyle Suss" />
-    <Avatar {...args} username="Michael Shilman" />
+    <Avatar username="Tom Coleman" />
+    <Avatar username="Dominic Nguyen" />
+    <Avatar username="Kyle Suss" />
+    <Avatar username="Michael Shilman" />
   </div>
 );
-
-Initials.args = {
-  loading: false,
-  size: "large",
-};
 
 export const Loading = (args) => (
   <div>
@@ -82,3 +71,22 @@ export const Large = (args) => (
     />
   </div>
 );
+
+/*
+ * New story using Controls
+ * Read more about Storybook templates at:
+ * https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+ */
+const Template = (args) => <Avatar {...args} />;
+
+export const Controls = Template.bind({});
+/*
+ * More on args at:
+ * https://storybook.js.org/docs/react/writing-stories/args
+ */
+Controls.args = {
+  loading: false,
+  size: "tiny",
+  username: "Dominic Nguyen",
+  src: "https://avatars2.githubusercontent.com/u/263385",
+};
